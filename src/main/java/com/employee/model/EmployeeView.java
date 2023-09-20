@@ -20,11 +20,11 @@ public class EmployeeView extends Base{
 	@Column(name = "total_students", insertable = false, updatable = false)
     private String firstName;
 	
-	private String lastName;
-	
-	private String positionTitle;
-	
-	private LocalDate dateArrival;
-	
-	private Status status;
+//	private String lastName;
+//	
+//	private String positionTitle;
+//	
+//	private LocalDate dateArrival;
+//	
+//	private Status status;
 }
