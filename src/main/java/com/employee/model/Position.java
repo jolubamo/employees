@@ -23,7 +23,6 @@ public class Position extends Base{
 	@ManyToOne(optional = false)
     @JoinColumn(name="emp_id",nullable = false, foreignKey = @ForeignKey(name = "fk_position_employee"))
     private Employee employee;
-
 	
 	@Column(name="pos_title", nullable = false)
     private String title;

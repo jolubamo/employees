@@ -14,17 +14,21 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @Entity
-@Subselect("select t.id, CASE WHEN COUNT(s.id) IS NULL THEN 0 ELSE COUNT(s.id) END AS total_students from teacher t left join classroom c on c.tea_id = t.id left join student s on s.cla_id = c.id group by t.id")
+@Subselect("select e.id, e.emp_first_name, e.emp_last_name, p.pos_title, p.pos_hire_date, CASE WHEN (DATEDIFF(day, p.pos_hire_date, GETDATE()) < p.pos_time_in_position) THEN 'Active' ELSE 'Inactive' END AS status from employee e join position p on p.emp_id = e.id")
 public class EmployeeView extends Base{
 
-	@Column(name = "total_students", insertable = false, updatable = false)
+	@Column(name="emp_first_name", insertable = false, updatable = false)
     private String firstName;
 	
-//	private String lastName;
-//	
-//	private String positionTitle;
-//	
-//	private LocalDate dateArrival;
-//	
-//	private Status status;
+	@Column(name="emp_last_name", insertable = false, updatable = false)
+    private String lastName;
+
+	@Column(name="pos_title", insertable = false, updatable = false)
+	private String positionTitle;
+	
+	@Column(name="pos_hire_date", insertable = false, updatable = false)
+	private LocalDate dateArrival;
+	
+	@Column(name="status", insertable = false, updatable = false)
+	private String status;
 }
